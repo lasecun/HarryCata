@@ -51,4 +51,42 @@ class HarryTest {
         // THEN
         assertEquals(expectedPrice, priceWithTwoBook)
     }
+
+    @Test
+    fun priceWithThreeBookSimilar() {
+        // GIVEN
+        val expectedPrice = 24.0
+
+        // WHEN
+        val priceWithTwoBook = totalMoney(listOf(Books.BOOK_1, Books.BOOK_1, Books.BOOK_1))
+
+        // THEN
+        assertEquals(expectedPrice, priceWithTwoBook)
+    }
+
+    @Test
+    fun priceWithTwoDifferent() {
+        // GIVEN
+        val expectedPrice = 23.2
+
+        // WHEN
+        val priceWithTwoBook = totalMoney(listOf(Books.BOOK_1, Books.BOOK_1, Books.BOOK_2))
+        val priceWithOtherTwoBook = totalMoney(listOf(Books.BOOK_1, Books.BOOK_2, Books.BOOK_2))
+        val priceMiddleDifferent = totalMoney(listOf(Books.BOOK_1, Books.BOOK_2, Books.BOOK_1))
+
+        // THEN
+        assertEquals(expectedPrice, priceWithTwoBook)
+        assertEquals(expectedPrice, priceWithOtherTwoBook)
+        assertEquals(expectedPrice, priceMiddleDifferent)
+    }
+
+    @Test
+    fun checkDifferentListItems(){
+        // GIVEN
+        val total = 3
+        // WHEN
+        val list = listOf(Books.BOOK_1, Books.BOOK_2, Books.BOOK_3)
+        // THEN
+        assertEquals(total, howManuDistinctItems(list).size)
+    }
 }
